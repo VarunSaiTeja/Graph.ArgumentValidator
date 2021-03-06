@@ -2,7 +2,7 @@
 
 Generally we use attributes from System.Annotations for validating our input models in controllers.
 
-As HotChocolate don't validate input arguments , After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
+As HotChocolate doesn't validate input arguments , After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
 
 
 ## Steps for configuring validator
