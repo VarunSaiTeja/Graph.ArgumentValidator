@@ -22,7 +22,7 @@ ValidatorSettings.ValdiateAllInputs = true;
 
 
 ### Step 3
-Add argument valdiator to services by referring below code
+Add argument validator to services by referring below code
 ```
 services
   .AddGraphQLServer()
@@ -31,7 +31,7 @@ services
 
 
 ### Additional Configuration
-If you don't want to valdiate all inputs then you can skip step 2 and follow the optional step i.e
+If you don't want to validate all inputs then you can skip step 2 and follow the optional step i.e
 
 Just add `Validatable` attribute to the class u defined for input.
 
