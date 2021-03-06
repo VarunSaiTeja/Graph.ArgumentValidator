@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup Label="Сommon properties">
+    <LangVersion>latest</LangVersion>
+    <PackageProjectUrl>https://github.com/VarunSaiTeja/Graph.ArgumentValidator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/VarunSaiTeja/Graph.ArgumentValidator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>Varun Teja</Copyright>
+    <Authors>Varun Teja</Authors>
+    <Product>$(MSBuildProjectName)</Product>
+    <Description>Input Argument Validator for HotChocolate</Description>
+    <Title>$(MSBuildProjectName)</Title>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    
+    <PackageId>$(MSBuildProjectName)</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    
+    <Version>1.0.0</Version>
+
+    <LibraryTargetFrameworks>net5.0; netcoreapp3.1; netstandard2.0</LibraryTargetFrameworks>
+    <TestTargetFrameworks>net5.0; netcoreapp3.1; netcoreapp2.1</TestTargetFrameworks>
+  </PropertyGroup>
+</Project>
