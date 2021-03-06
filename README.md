@@ -3,9 +3,9 @@
 <a href="https://www.nuget.org/packages/Graph.ArgumentValidator"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/Graph.ArgumentValidator"></a>
 <a href="https://www.nuget.org/packages/Graph.ArgumentValidator"><img alt="NuGet Downloads" src="https://img.shields.io/nuget/dt/Graph.ArgumentValidator"></a>
 
-Generally we use attributes from System.Annotations for validating our input models in controllers.
+Generally, we use attributes from System.Annotations for validating our input models in controllers.
 
-As HotChocolate doesn't validate input arguments , After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
+As HotChocolate doesn't validate input arguments, After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
 
 
 ## Steps for configuring validator
@@ -22,7 +22,7 @@ ValidatorSettings.ValdiateAllInputs = true;
 
 
 ### Step 3
-Add argument validator to services by referring below code
+Add argument validator to services by referring to below code
 ```
 services
   .AddGraphQLServer()
@@ -33,7 +33,7 @@ services
 ### Additional Configuration
 If you don't want to validate all inputs then you can skip step 2 and follow the optional step i.e
 
-Just add `Validatable` attribute to the class u defined for input.
+Just add the `Validatable` attribute to the class u defined for input.
 
 Ex:
 ```
@@ -52,7 +52,7 @@ Ex:
 ```
 
 
-When user given wrong values to input, this is how the response from GraphQL Server will looks like
+When the user is given wrong values to input, this is how the response from GraphQL Server will look like
 ```
 {
   "errors": [
