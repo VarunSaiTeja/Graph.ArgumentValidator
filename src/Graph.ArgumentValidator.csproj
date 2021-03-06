@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.Execution" Version="11.0.9" />
+  </ItemGroup>
+
 </Project>
