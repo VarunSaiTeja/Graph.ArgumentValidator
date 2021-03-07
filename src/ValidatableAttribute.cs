@@ -2,7 +2,7 @@
 
 namespace Graph.ArgumentValidator
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Parameter, Inherited = true, AllowMultiple = false)]
     public class ValidatableAttribute : Attribute
     {
         public ValidatableAttribute()
