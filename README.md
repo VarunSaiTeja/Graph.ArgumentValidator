@@ -39,17 +39,23 @@ Just add the `Validatable` attribute to the class u defined for input.
 
 Ex:
 ```
-    [Validatable]
-    public class AddUserInput
+    using System.ComponentModel.DataAnnotations;
+    using Graph.ArgumentValidator;
+    
+    namespace Demo
     {
-        [Required, MinLength(4, ErrorMessage = "Username must be atleast 4 characters.")]
-        public string UserName { get; set; }
+        [Validatable]
+        public class AddUserInput
+        {
+            [Required, MinLength(4, ErrorMessage = "Username must be atleast 4 characters.")]
+            public string UserName { get; set; }
 
-        [Required, RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email Id format is invalid")]
-        public string Email { get; set; }
+            [Required, RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email Id format is invalid")]
+            public string Email { get; set; }
 
-        [Required, RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "Password needs to be more strong.")]
-        public string Password { get; set; }
+            [Required, RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "Password needs to be more strong.")]
+            public string Password { get; set; }
+        }
     }
 ```
 
