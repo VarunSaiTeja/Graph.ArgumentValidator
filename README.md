@@ -7,7 +7,7 @@ Generally, we use attributes from System.ComponentModel.DataAnnotations for vali
 
 As HotChocolate doesn't validate input arguments, After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
 
-Tech Note: You can use all validation attributes/rules from System.ComponentModel.DataAnnotations (ex: Required, MinLength, Regex etc). This package just adds middleware to the  hotchocolate resolver for valdiating your input models as configured in below steps.
+Tech Note: You can use all validation attributes/rules from System.ComponentModel.DataAnnotations (ex: Required, MinLength, Regex etc). This package just adds a middleware to the hot chocolate resolver for validating your input models as configured below steps.
 
 
 ## Steps for configuring validator
