@@ -19,7 +19,7 @@ Go to StartUp.cs file and inside ConfigureServices make the following changes.
 ### Step 2
 Keep this code to validate all inputs of GraphQL Query/Mutation.
 ```
-ValidatorSettings.ValdiateAllInputs = true;
+ValidatorSettings.ValidateAllInputs = true;
 ```
 
 
