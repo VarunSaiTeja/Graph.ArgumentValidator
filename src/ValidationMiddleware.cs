@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Graph.ArgumentValidator
 {
-    class ValidationMiddleware
+    internal class ValidationMiddleware
     {
         private readonly FieldDelegate _next;
 
@@ -23,11 +23,15 @@ namespace Graph.ArgumentValidator
             var errors = new List<ValidationResult>();
 
             // we could even further optimize and aggregate this list in the interceptor and inject it into the middleware
-            foreach (var argument in context.Field.Arguments.Where(t => t.ContextData.ContainsKey(WellKnownContextData.NeedValidation)))
+            foreach (var argument in context.Field.Arguments)
             {
-                var input = context.ArgumentValue<object>(argument.Name);
-                var validationContext = new ValidationContext(input);
-                Validator.TryValidateObject(input, validationContext, errors, true);
+                if (argument.ContextData.TryGetValue(WellKnownContextData.ValidationDelegate, out object value) &&
+                    value is Validate validate)
+                {
+                    var input = context.ArgumentValue<object>(argument.Name);
+                    var validationContext = new ValidationContext(input);
+                    validate(input, validationContext, errors);
+                }
             }
 
             if (errors.Count > 0)
