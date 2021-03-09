@@ -1,0 +1,10 @@
+﻿{
+  "errors": [
+    {
+      "message": "The String field is not a valid e-mail address."
+    }
+  ],
+  "data": {
+    "argIsEmail": null
+  }
+}

@@ -3,12 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Graph.ArgumentValidator
 {
-    public static class Extensions
+    public static class RequestExecutorBuilderExtensions
     {
         public static IRequestExecutorBuilder AddArgumentValidator(
             this IRequestExecutorBuilder requestExecutorBuilder)
         {
-            requestExecutorBuilder.UseField<ValidationMiddleware>();
+            requestExecutorBuilder.TryAddTypeInterceptor<ValidationTypeInterceptor>();
 
             return requestExecutorBuilder;
         }
