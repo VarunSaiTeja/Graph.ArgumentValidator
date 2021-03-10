@@ -3,7 +3,6 @@ using HotChocolate.Resolvers;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Graph.ArgumentValidator
@@ -21,6 +20,7 @@ namespace Graph.ArgumentValidator
         public async Task InvokeAsync(IMiddlewareContext context)
         {
             var errors = new List<ValidationResult>();
+            var hasErrors = false;
 
             // we could even further optimize and aggregate this list in the interceptor and inject it into the middleware
             foreach (var argument in context.Field.Arguments)
@@ -31,21 +31,27 @@ namespace Graph.ArgumentValidator
                     var input = context.ArgumentValue<object>(argument.Name);
                     var validationContext = new ValidationContext(input);
                     validate(input, validationContext, errors);
+
+                    if (errors.Any())
+                    {
+                        foreach (var validationResult in errors)
+                        {
+                            var field = validationResult.MemberNames.FirstOrDefault() ?? argument.Name;
+
+                            context.ReportError(ErrorBuilder.New()
+                                .SetMessage(validationResult.ErrorMessage)
+                                .SetExtension("field", char.ToLowerInvariant(field[0]) + field.Substring(1))
+                                .SetPath(Path.New(argument.Name))
+                                .Build());
+                        }
+
+                        errors.Clear();
+                        hasErrors = true;
+                    }
                 }
             }
 
-            if (errors.Count > 0)
-            {
-                foreach (var error in errors)
-                {
-                    // NOTE: it would be good to provide an error code.
-                    context.ReportError(ErrorBuilder.New()
-                        .SetMessage(error.ErrorMessage)
-                        // .SetCode()
-                        .Build());
-                }
-            }
-            else
+            if (!hasErrors)
             {
                 await _next(context);
             }
