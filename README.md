@@ -17,13 +17,6 @@ As HotChocolate doesn't validate input arguments, After installing this package,
 Go to StartUp.cs file and inside ConfigureServices make the following changes.
 
 ### Step 2
-Keep this code to validate all inputs of GraphQL Query/Mutation.
-```
-ValidatorSettings.ValidateAllInputs = true;
-```
-
-
-### Step 3
 Add argument validator to services by referring to below code
 ```
 services
@@ -32,10 +25,8 @@ services
 ```
 
 
-### Additional Configuration
-If you don't want to validate all inputs then you can skip step 2 and follow the optional step i.e
-
-Just add the `Validatable` attribute to the class u defined for input.
+### Step 3
+Just add the `Validatable` attribute to all the class you defined for input.
 
 Ex:
 ```
