@@ -41,25 +41,61 @@ Ex:
             [Required, MinLength(4, ErrorMessage = "Username must be atleast 4 characters.")]
             public string UserName { get; set; }
 
-            [Required, RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email Id format is invalid")]
+            [Required, RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email Id format is invalid.")]
             public string Email { get; set; }
 
             [Required, RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "Password needs to be more strong.")]
             public string Password { get; set; }
         }
+        
+        public class UserMutations
+        {
+            public async Task<int> AddUser(AddUserInput input, [Service] UserService userService)
+            {
+                return userService.AddUser(input);
+            }
+        }
     }
 ```
 
 
-When the user is given wrong values to input, this is how the response from GraphQL Server will look like
+When the user is given the following wrong values to the mutation input
+ ```
+      mutation{
+       addUser(input:{userName:"va2",password:"weak",email:"varun"})
+      }
+ ```
+ 
+This is the response we got from GraphQL Server
 ```
 {
   "errors": [
     {
-      "message": "Username must be at least 4 characters."
+      "message": "Username must be atleast 4 characters.",
+      "path": [
+        "input"
+      ],
+      "extensions": {
+        "field": "userName"
+      }
     },
     {
-      "message": "Password needs to be more strong."
+      "message": "Email Id format is invalid.",
+      "path": [
+        "input"
+      ],
+      "extensions": {
+        "field": "email"
+      }
+    },
+    {
+      "message": "Password needs to be more strong.",
+      "path": [
+        "input"
+      ],
+      "extensions": {
+        "field": "password"
+      }
     }
   ]
 }
