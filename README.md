@@ -65,7 +65,7 @@ Another way of providing inline validation for Primitive data types
   
   namespace Demo
   {
-      public class Query
+      public class Mutation
       {
           public bool Register([Required(ErrorMessage = "Email is required")string email,
               [Phone(ErrorMessage = "Invalid Phone Number")] string phone)
