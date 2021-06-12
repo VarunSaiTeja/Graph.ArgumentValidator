@@ -36,23 +36,26 @@ Ex:
     namespace Demo
     {
         [Validatable]
-        public class AddUserInput
+        public class RegisterUserInput
         {
             [Required, MinLength(4, ErrorMessage = "Username must be atleast 4 characters.")]
             public string UserName { get; set; }
 
-            [Required, RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email Id format is invalid.")]
+            [Required, EmailAddress(ErrorMessage = "Email Id format is invalid.")]
             public string Email { get; set; }
 
             [Required, RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "Password needs to be more strong.")]
             public string Password { get; set; }
+            
+            [Compare(nameof(Password), ErrorMessage = "Passwords do not match!")]
+            public string ConfirmPassword { get; set; }
         }
         
         public class UserMutations
         {
-            public int AddUser(AddUserInput input, [Service] UserService userService)
+            public int RegisterUser(RegisterUserInput input, [Service] UserService userService)
             {
-                return userService.AddUser(input);
+                return userService.RegisterUser(input);
             }
         }
     }
@@ -65,12 +68,12 @@ Another way of providing inline validation for Primitive data types
   
   namespace Demo
   {
-      public class Mutation
+      public class Mutations
       {
-          public bool Register([Required(ErrorMessage = "Email is required")string email,
+          public bool RegisterUserPhone([Required(ErrorMessage = "Email is required")string email,
               [Phone(ErrorMessage = "Invalid Phone Number")] string phone)
           {
-              return userService.Register(email,phone);
+              return userService.RegisterUserPhone(email,phone);
           }
       }
   }
@@ -80,7 +83,7 @@ Another way of providing inline validation for Primitive data types
 When the user is given the following wrong values to the mutation input
  ```
       mutation{
-       addUser(input:{userName:"va2",password:"weak",email:"varun"})
+       registerUser(input:{userName:"va2", password:"weak", confirmPassword:"strong", email:"varun"})
       }
  ```
  
@@ -113,6 +116,15 @@ This is the response we got from GraphQL Server
       ],
       "extensions": {
         "field": "password"
+      }
+    },
+    {
+      "message": "Passwords do not match!",
+      "path": [
+        "input"
+      ],
+      "extensions": {
+        "field": "confirmPassword"
       }
     }
   ]
