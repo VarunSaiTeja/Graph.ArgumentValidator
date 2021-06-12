@@ -58,6 +58,24 @@ Ex:
     }
 ```
 
+Another way of providing inline validation for Primitive data types
+```
+  using System.ComponentModel.DataAnnotations;
+  using Graph.ArgumentValidator;
+  
+  namespace Demo
+  {
+      public class Query
+      {
+          public bool Register([Required(ErrorMessage = "Email is required")string email,
+              [Phone(ErrorMessage = "Invalid Phone Number")] string phone)
+          {
+              return userService.Register(email,phone);
+          }
+      }
+  }
+```
+
 
 When the user is given the following wrong values to the mutation input
  ```
