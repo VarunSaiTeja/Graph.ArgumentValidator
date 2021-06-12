@@ -50,7 +50,7 @@ Ex:
         
         public class UserMutations
         {
-            public async Task<int> AddUser(AddUserInput input, [Service] UserService userService)
+            public int AddUser(AddUserInput input, [Service] UserService userService)
             {
                 return userService.AddUser(input);
             }
