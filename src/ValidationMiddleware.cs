@@ -1,9 +1,10 @@
-﻿using HotChocolate;
-using HotChocolate.Resolvers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
+using HotChocolate;
+using HotChocolate.Resolvers;
 
 namespace Graph.ArgumentValidator
 {
@@ -23,7 +24,7 @@ namespace Graph.ArgumentValidator
             var hasErrors = false;
 
             // we could even further optimize and aggregate this list in the interceptor and inject it into the middleware
-            foreach (var argument in context.Field.Arguments)
+            foreach (var argument in context.Selection.Field.Arguments)
             {
                 if (argument.ContextData.TryGetValue(WellKnownContextData.ValidationDelegate, out object value) &&
                     value is Validate validate)

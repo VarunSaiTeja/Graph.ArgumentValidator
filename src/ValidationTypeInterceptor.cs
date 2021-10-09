@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+
 using HotChocolate.Configuration;
 using HotChocolate.Resolvers;
 using HotChocolate.Types.Descriptors.Definitions;
@@ -61,7 +62,7 @@ namespace Graph.ArgumentValidator
                         }
 
                         // we add the validation middleware to the first spot so that validation is executed first.
-                        fieldDef.MiddlewareComponents.Insert(0, _middleware);
+                        fieldDef.MiddlewareDefinitions.Insert(0, new FieldMiddlewareDefinition(_middleware));
                     }
                 }
             }
