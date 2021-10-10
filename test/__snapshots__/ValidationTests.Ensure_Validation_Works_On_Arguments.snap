@@ -1,7 +1,13 @@
 ﻿{
   "errors": [
     {
-      "message": "The String field is not a valid e-mail address."
+      "message": "The String field is not a valid e-mail address.",
+      "path": [
+        "email"
+      ],
+      "extensions": {
+        "field": "email"
+      }
     }
   ],
   "data": {
