@@ -10,6 +10,13 @@ As HotChocolate doesn't validate input arguments, After installing this package,
 **Tech Note**: You can use all validation attributes/rules from System.ComponentModel.DataAnnotations (ex: Required, MinLength, Regex etc). This package just adds a middleware to the hot chocolate resolver for validating your input models as configured in the below steps.
 
 
+**Installation Note**: 
+
+Install Graph.ArgumentValidator v2.0.0 if you are using HotChocolate v12.
+
+Install Graph.ArgumentValidator v1.0.1 if you are using HotChocolate v11.
+
+
 ## Steps for configuring validator
 
 
