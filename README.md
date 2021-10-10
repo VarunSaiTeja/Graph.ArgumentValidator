@@ -12,9 +12,9 @@ As HotChocolate doesn't validate input arguments, After installing this package,
 
 **Installation Note**: 
 
-Install Graph.ArgumentValidator v2.0.0 if you are using HotChocolate v12.
+Use Graph.ArgumentValidator v2.0.0 if you are using HotChocolate v12.
 
-Install Graph.ArgumentValidator v1.0.1 if you are using HotChocolate v11.
+Use Graph.ArgumentValidator v1.0.1 if you are using HotChocolate v11.
 
 
 ## Steps for configuring validator
