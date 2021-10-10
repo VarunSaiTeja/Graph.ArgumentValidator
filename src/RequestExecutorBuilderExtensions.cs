@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-using HotChocolate.Execution.Configuration;
+﻿using HotChocolate.Execution.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Graph.ArgumentValidator
 {

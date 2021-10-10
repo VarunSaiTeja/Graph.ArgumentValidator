@@ -1,10 +1,9 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 using HotChocolate;
 using HotChocolate.Execution;
 using Microsoft.Extensions.DependencyInjection;
 using Snapshooter.Xunit;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Graph.ArgumentValidator

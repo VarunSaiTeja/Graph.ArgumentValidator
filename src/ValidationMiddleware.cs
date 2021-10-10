@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using HotChocolate;
+using HotChocolate.Resolvers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-
-using HotChocolate;
-using HotChocolate.Resolvers;
 
 namespace Graph.ArgumentValidator
 {
