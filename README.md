@@ -7,6 +7,8 @@ Generally, we use attributes from System.ComponentModel.DataAnnotations for vali
 
 As HotChocolate doesn't validate input arguments, After installing this package, By just adding 2 lines of code in your Startup.cs file. You will be adding support for validation to all input models in your Queries/Mutations.
 
+[!["Buy Me A Coffee"](https://cdn.buymeacoffee.com/assets/img/home-page-v3/bmc-new-logo.png)](https://www.buymeacoffee.com/varunteja)
+
 
 **Installation Note**: 
 
