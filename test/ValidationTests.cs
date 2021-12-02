@@ -15,6 +15,7 @@ namespace Graph.ArgumentValidator
         {
             var result =
                 await new ServiceCollection()
+                    .AddScoped(_ => new Service())
                     .AddGraphQL()
                     .AddQueryType<Query>()
                     .AddArgumentValidator()
@@ -28,6 +29,7 @@ namespace Graph.ArgumentValidator
         {
             var result =
                 await new ServiceCollection()
+                    .AddScoped(_ => new Service())
                     .AddGraphQL()
                     .AddQueryType<Query>()
                     .AddArgumentValidator()
@@ -41,6 +43,7 @@ namespace Graph.ArgumentValidator
         {
             var result =
                 await new ServiceCollection()
+                    .AddScoped(_ => new Service())
                     .AddGraphQL()
                     .AddQueryType<Query>()
                     .AddArgumentValidator()
@@ -54,6 +57,7 @@ namespace Graph.ArgumentValidator
         {
             var result =
                 await new ServiceCollection()
+                    .AddScoped(_ => new Service())
                     .AddGraphQL()
                     .AddQueryType<Query>()
                     .AddArgumentValidator()
@@ -65,7 +69,7 @@ namespace Graph.ArgumentValidator
 
     public class Query
     {
-        public string ArgIsEmail([EmailAddress] string email) => email;
+        public string ArgIsEmail([EmailAddress][ResolveService] string email) => email;
 
         public string ArgIsInput(MyInput input) => input.Email;
     }
@@ -74,6 +78,21 @@ namespace Graph.ArgumentValidator
     public class MyInput
     {
         [EmailAddress]
+        [ResolveService]
         public string Email { get; set; }
+    }
+
+    public class Service
+    {
+        public bool CouldBeResolved => true;
+    }
+
+    public class ResolveServiceAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            var service = (Service)validationContext.GetService(typeof(Service));
+            return service is { CouldBeResolved: true } ? ValidationResult.Success : new ValidationResult("error");
+        }
     }
 }

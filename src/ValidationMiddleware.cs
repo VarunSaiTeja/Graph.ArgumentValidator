@@ -28,8 +28,8 @@ namespace Graph.ArgumentValidator
                 if (argument.ContextData.TryGetValue(WellKnownContextData.ValidationDelegate, out object value) &&
                     value is Validate validate)
                 {
-                    var input = context.ArgumentValue<object>(argument.Name);
-                    var validationContext = new ValidationContext(input);
+                    var input = context.ArgumentValue<object>(argument.Name); 
+                    var validationContext = new ValidationContext(input, context.Services, null);
                     validate(input, validationContext, errors);
 
                     if (errors.Any())
