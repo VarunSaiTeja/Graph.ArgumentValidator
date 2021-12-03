@@ -1,0 +1,16 @@
+﻿{
+  "errors": [
+    {
+      "message": "Email already exist",
+      "path": [
+        "email"
+      ],
+      "extensions": {
+        "field": "email"
+      }
+    }
+  ],
+  "data": {
+    "checkDuplicateEmail": null
+  }
+}
