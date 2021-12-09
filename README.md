@@ -91,14 +91,14 @@ Another way of providing inline validation for Primitive data types
 
 
 When the user is given the following wrong values to the mutation input
- ```
+ ```graphql
       mutation{
        registerUser(input:{userName:"va2", password:"weak", confirmPassword:"strong", email:"varun"})
       }
  ```
  
 This is the response we got from GraphQL Server
-```
+```json
 {
   "errors": [
     {
