@@ -28,7 +28,7 @@ Go to StartUp.cs file and inside ConfigureServices make the following changes.
 
 ### Step 2
 Add argument validator to services by referring to below code
-```
+```csharp
 services
   .AddGraphQLServer()
   .AddArgumentValidator();
@@ -39,7 +39,7 @@ services
 Just add the `Validatable` attribute to all the classes you defined for input.
 
 Ex:
-```
+```csharp
     using System.ComponentModel.DataAnnotations;
     using Graph.ArgumentValidator;
     
@@ -72,7 +72,7 @@ Ex:
 ```
 
 Another way of providing inline validation for Primitive data types
-```
+```csharp
   using System.ComponentModel.DataAnnotations;
   using Graph.ArgumentValidator;
   
