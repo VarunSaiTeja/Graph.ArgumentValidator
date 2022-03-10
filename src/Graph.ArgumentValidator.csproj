@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.Execution" Version="12.3.2" />
+    <PackageReference Include="HotChocolate.Execution" Version="12.6.2" />
   </ItemGroup>
 
   <ItemGroup>
