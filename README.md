@@ -1,4 +1,6 @@
-# Adds support for validating input arguments in HotChocolate
+# Graph.ArgumentValidator
+
+## Adds support for validating input arguments in HotChocolate
 
 <a href="https://www.nuget.org/packages/Graph.ArgumentValidator"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/Graph.ArgumentValidator"></a>
 <a href="https://www.nuget.org/packages/Graph.ArgumentValidator"><img alt="NuGet Downloads" src="https://img.shields.io/nuget/dt/Graph.ArgumentValidator"></a>
