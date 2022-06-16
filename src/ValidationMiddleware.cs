@@ -1,8 +1,9 @@
-﻿using HotChocolate;
+using HotChocolate;
 using HotChocolate.Resolvers;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Graph.ArgumentValidator
@@ -30,7 +31,7 @@ namespace Graph.ArgumentValidator
                 {
                     var input = context.ArgumentValue<object>(argument.Name);
                     var validationContext = new ValidationContext(input, context.Services, null);
-                    validate(input, validationContext, errors);
+                    RecursiveValidate(input, context, errors);
 
                     if (errors.Any())
                     {
@@ -55,6 +56,21 @@ namespace Graph.ArgumentValidator
             {
                 await _next(context);
             }
+        }
+
+        public void RecursiveValidate(object input, IMiddlewareContext context, List<ValidationResult> errors)
+        {
+            var validationContext = new ValidationContext(input, context.Services, null);
+            Validator.TryValidateObject(input, validationContext, errors, true);
+
+            PropertyInfo[] props = input.GetType().GetProperties();
+            foreach (PropertyInfo prop in props)
+            {
+                object propInput = input.GetType().GetProperty(prop.Name).GetValue(input, null);
+                if (propInput != null && propInput.GetType().Namespace != "System")
+                    RecursiveValidate(propInput, context, errors);
+            }
+
         }
     }
 }
