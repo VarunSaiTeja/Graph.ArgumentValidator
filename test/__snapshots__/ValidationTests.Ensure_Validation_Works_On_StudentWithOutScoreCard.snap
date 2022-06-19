@@ -1,0 +1,20 @@
+﻿{
+  "errors": [
+    {
+      "message": "\u0060scoreCard\u0060 is a required field and cannot be null.",
+      "locations": [
+        {
+          "line": 1,
+          "column": 26
+        }
+      ],
+      "path": [
+        "checkPass"
+      ],
+      "extensions": {
+        "field": "scoreCard",
+        "specifiedBy": "http://spec.graphql.org/October2021/#sec-Input-Object-Required-Fields"
+      }
+    }
+  ]
+}

@@ -74,5 +74,21 @@ namespace Graph.ArgumentValidator.Tests
 
             result.MatchSnapshot();
         }
+
+        [Fact]
+        public async Task Ensure_Validation_Works_On_StudentWithScoreCard()
+        {
+            var result = await ExecuteRequest("query{checkPass(student: { firstName: \"Varun\",scoreCard: { school: \"Gayatri\",totalScore: 85} })}");
+
+            result.MatchSnapshot();
+        }
+
+        [Fact]
+        public async Task Ensure_Validation_Works_On_StudentWithOutScoreCard()
+        {
+            var result = await ExecuteRequest("query{checkPass(student: { firstName: \"Varun\"})}");
+
+            result.MatchSnapshot();
+        }
     }
 }
