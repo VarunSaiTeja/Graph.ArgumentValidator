@@ -6,6 +6,8 @@ namespace Shared
     {
         public string ArgIsEmail([EmailAddress, Required] string email) => email;
 
+        public string ArgIsLimitedString([StringLength(6)] string comment) => comment;
+
         /// <summary>
         /// Gives validation failed result if email already exist. Other wise *You are good to go...*
         /// </summary>

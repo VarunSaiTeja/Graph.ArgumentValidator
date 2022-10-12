@@ -29,14 +29,14 @@ namespace Graph.ArgumentValidator
                     value is Validate validate)
                 {
                     var input = context.ArgumentValue<object>(argument.Name);
-                    var validationContext = new ValidationContext(input, context.Services, null);
+                    var validationContext = new ValidationContext(input ?? this, context.Services, null);
                     validate(input, validationContext, errors);
 
                     if (errors.Any())
                     {
                         foreach (var validationResult in errors)
                         {
-                            var field = validationResult.MemberNames.FirstOrDefault() ?? argument.Name;
+                            string field = input != null ? validationResult.MemberNames.FirstOrDefault() ?? argument.Name : argument.Name;
 
                             context.ReportError(ErrorBuilder.New()
                                 .SetMessage(validationResult.ErrorMessage)

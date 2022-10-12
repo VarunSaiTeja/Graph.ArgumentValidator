@@ -51,6 +51,30 @@ namespace Graph.ArgumentValidator.Tests
         }
 
         [Fact]
+        public async Task Ensure_Validation_Works_On_StringObjects_ValidString()
+        {
+            var result = await ExecuteRequest("{ argIsLimitedString(comment: \"123456\") }");
+
+            result.MatchSnapshot();
+        }
+
+        [Fact]
+        public async Task Ensure_Validation_Works_On_StringObjects()
+        {
+            var result = await ExecuteRequest("{ argIsLimitedString(comment: \"1234567\") }");
+
+            result.MatchSnapshot();
+        }
+
+        [Fact]
+        public async Task Ensure_Validation_Works_On_StringObjects_Null()
+        {
+            var result = await ExecuteRequest("{ argIsLimitedString(comment: null) }");
+
+            result.MatchSnapshot();
+        }
+
+        [Fact]
         public async Task Ensure_Validation_Works_On_InputObjects_ValidEmail()
         {
             var result = await ExecuteRequest("{ argIsInput(input: { email: \"abc@abc.com\" }) }");

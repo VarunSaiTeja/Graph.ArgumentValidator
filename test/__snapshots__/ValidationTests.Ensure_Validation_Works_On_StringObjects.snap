@@ -1,0 +1,16 @@
+﻿{
+  "errors": [
+    {
+      "message": "The field String must be a string with a maximum length of 6.",
+      "path": [
+        "comment"
+      ],
+      "extensions": {
+        "field": "comment"
+      }
+    }
+  ],
+  "data": {
+    "argIsLimitedString": null
+  }
+}
