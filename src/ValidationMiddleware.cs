@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using HotChocolate.Execution;
 
 namespace Graph.ArgumentValidator
 {
@@ -41,7 +42,7 @@ namespace Graph.ArgumentValidator
                             context.ReportError(ErrorBuilder.New()
                                 .SetMessage(validationResult.ErrorMessage)
                                 .SetExtension("field", char.ToLowerInvariant(field[0]) + field.Substring(1))
-                                .SetPath(Path.New(argument.Name))
+                                .SetPath(PathFactory.Instance.New(argument.Name))
                                 .Build());
                         }
 

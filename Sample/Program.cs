@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Graph.ArgumentValidator;
+using Shared;
 
-namespace Sample
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+var builder = WebApplication.CreateBuilder(args);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+builder.Services
+    .AddGraphQLServer()
+    .AddArgumentValidator()
+    .AddQueryType<Query>();
+builder.Services
+    .AddSingleton<DuplicateEmailValidatorService>();
+    
+var app = builder.Build();
+
+app.MapGraphQL();
+
+app.Run();
