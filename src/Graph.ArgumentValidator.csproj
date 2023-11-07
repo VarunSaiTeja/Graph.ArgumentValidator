@@ -3,16 +3,16 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(LibraryTargetFrameworks)</TargetFrameworks>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PackageTags>HotChocolate.Validator, HotChocolate, GraphQL</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>2.1.1</Version>
+    <Version>$(Version)</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.Execution" Version="13.2.1" />
+    <PackageReference Include="HotChocolate.Execution" Version="13.7.0" />
   </ItemGroup>
 
   <ItemGroup>
