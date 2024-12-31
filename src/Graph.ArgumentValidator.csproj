@@ -2,9 +2,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;</TargetFrameworks>
-    <ExtendedTargetFrameworks>net6.0; netstandard2.0</ExtendedTargetFrameworks>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net8.0; net6.0</TargetFrameworks>
+    <ExtendedTargetFrameworks>net8.0; net6.0; netstandard2.0</ExtendedTargetFrameworks>
     <PackageTags>HotChocolate.Validator, HotChocolate, GraphQL</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
