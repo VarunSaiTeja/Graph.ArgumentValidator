@@ -2,6 +2,12 @@
   "errors": [
     {
       "message": "Email already exist",
+      "locations": [
+        {
+          "line": 1,
+          "column": 3
+        }
+      ],
       "path": [
         "email"
       ],

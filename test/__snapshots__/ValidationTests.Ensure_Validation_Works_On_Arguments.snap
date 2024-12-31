@@ -2,6 +2,12 @@
   "errors": [
     {
       "message": "The String field is not a valid e-mail address.",
+      "locations": [
+        {
+          "line": 1,
+          "column": 3
+        }
+      ],
       "path": [
         "email"
       ],
