@@ -14,6 +14,8 @@ As HotChocolate doesn't validate input arguments, After installing this package,
 
 **Installation Note**:
 
+Use Graph.ArgumentValidator v4.0.0 if you are using HotChocolate v14.
+
 Use Graph.ArgumentValidator v3.0.0 if you are using HotChocolate v13.
 
 Use Graph.ArgumentValidator v2.0.0 if you are using HotChocolate v12.
